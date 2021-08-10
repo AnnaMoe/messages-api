@@ -1,3 +1,3 @@
 class Message < ApplicationRecord
-  #validates :body, length: { maximum: 250 }
+  validates :body, length: { maximum: 250 }
 end

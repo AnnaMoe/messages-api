@@ -5,8 +5,16 @@ class Api::V1::MessagesController < Api::V1::BaseController
     @messages = Message.all
   end
 
-
   def show
+  end
+
+   def create
+    @message = Message.new(message_params)
+    if @message.save
+      render :show, status: :created
+    else
+      render_error
+    end
   end
 
   def update 
@@ -24,6 +32,7 @@ class Api::V1::MessagesController < Api::V1::BaseController
   end
 
   def message_params
+    params.inspect
     params.require(:message).permit(:body)
   end
 
