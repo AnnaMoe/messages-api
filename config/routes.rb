@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get this route /api/v1/restaurants
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :messages, only: [ :index, :show, :update, :create ]
+      resources :messages, only: [ :index, :show, :update, :create, :destroy ]
     end
   end
 end

@@ -1,5 +1,5 @@
 class Api::V1::MessagesController < Api::V1::BaseController
-  before_action :set_message, only: [ :show, :update ]
+  before_action :set_message, only: [ :show, :update, :destroy ]
   
   def index
     @messages = Message.all
@@ -23,6 +23,13 @@ class Api::V1::MessagesController < Api::V1::BaseController
     else
       render_error
     end
+  end
+
+  def destroy
+    @message.destroy
+    # 204 http code: 
+    head :no_content
+    # No need to create a `destroy.json.jbuilder` view
   end
 
   private
